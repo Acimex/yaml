@@ -6,58 +6,28 @@
 
 proxy-providers:
 
-  火烧云:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
+  云深:
+    url: "https://ysbzc1.subscribe1.us/api/v1/client/subscribe?token=a82cf04a573b2bcd3ee0c160f2c8863c"
     type: http
     interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 直连 
+    proxy: 直连
 
-  小牛:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
+  流量光:
+    url: "https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=7456c2a31b9ea1f0ca124b5bf5a2b1d0"
     type: http
     interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 直连    
+    proxy: 直连
 
-  硅谷:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连      
-   
-  猫耳:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连   
-
-  快猫:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连    
-
-  牛逼:
-    url: "[订阅地址（机场原始地址/Sub-Store格式化后的地址）]"
+  星畅:
+    url: "https://xcyun.cc/xe45lgf21?token=314db6d2520b8b8fdf627c6fd0bb66c2"
     type: http
     interval: 86400
     health-check:
@@ -129,37 +99,28 @@ profile:
 # ========================
 default: &default
   type: select
-  proxies: [直连,所有-手动,所有-自动,香港-自动,台湾-自动,日本-自动,新加坡-自动,韩国-自动,美国-自动,其他-自动,拒绝]
+  proxies: [直连,所有-自动,香港-自动,台湾-自动,日本-自动,新加坡-自动,韩国-自动,美国-自动,其他-自动,所有-手动,拒绝]
 
 proxy-groups:
-  - {name: Claude, <<: *default}
-  - {name: Meta AI, <<: *default}
-  - {name: Perplexity, <<: *default}
-  - {name: AI, <<: *default}
-  - {name: GitHub, <<: *default}
-  - {name: Telegram, <<: *default}
-  - {name: Twitter(X), <<: *default}
+  - {name: 所有-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: Google, <<: *default}
   - {name: WhatsApp, <<: *default}
-  - {name: Facebook, <<: *default}
-  - {name: Steam, <<: *default}
-  - {name: Game, <<: *default}
-  - {name: YouTube, <<: *default}
+  - {name: Telegram, <<: *default}
+  - {name: GitHub, <<: *default}
+  - {name: Social, <<: *default}
   - {name: TikTok, <<: *default}
-  - {name: Disney, <<: *default}
   - {name: Netflix, <<: *default}
-  - {name: HBO, <<: *default}
-  - {name: Spotify, <<: *default}
+  - {name: Streaming, <<: *default}
   - {name: Crypto, <<: *default}
-  - {name: Amazon, <<: *default}
+  - {name: AI, <<: *default}
+  - {name: Game, <<: *default}
   - {name: Apple, <<: *default}
   - {name: Microsoft, <<: *default}
-  - {name: Google, <<: *default}
   - {name: Test, <<: *default}
   - {name: 国外, <<: *default}
   - {name: 国内, <<: *default}
-  - {name: 其他, <<: *default}
+  - {name: 漏网之鱼, <<: *default}
   - {name: 所有-手动, type: select, include-all: true, filter: "^((?!(直连|拒绝)).)*$"}
-  - {name: 所有-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
   - {name: 香港-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong)).*$"}
   - {name: 台湾-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?=.*(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)).*$"}
   - {name: 日本-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?=.*(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)).*$"}
@@ -172,30 +133,29 @@ proxy-groups:
 # 规则引擎（rules）
 # ========================
 rules:
-  - RULE-SET,Claude / Domain,Claude
-  - RULE-SET,Meta AI / Domain,Meta AI
-  - RULE-SET,Perplexity / Domain,Perplexity
+  - RULE-SET,Claude / Domain,AI
+  - RULE-SET,Meta AI / Domain,AI
+  - RULE-SET,Perplexity / Domain,AI
   - RULE-SET,AI / Domain,AI
   - RULE-SET,Github / Domain,GitHub
   - RULE-SET,Telegram / Domain,Telegram
   - RULE-SET,Telegram / IP,Telegram,no-resolve
-  - RULE-SET,Twitter / Domain,Twitter(X)
   - RULE-SET,WhatsApp / Domain,WhatsApp
-  - RULE-SET,Facebook / Domain,Facebook
-  - RULE-SET,Amazon / Domain,Amazon
+  - RULE-SET,Twitter / Domain,Social
+  - RULE-SET,Facebook / Domain,Social
   - RULE-SET,Apple / Domain,Apple
   - RULE-SET,Microsoft / Domain,Microsoft
   - RULE-SET,OKX / Domain,Crypto
   - RULE-SET,Bybit / Domain,Crypto
   - RULE-SET,Binance / Domain,Crypto
-  - RULE-SET,Youtube / Domain,YouTube
   - RULE-SET,TikTok / Domain,TikTok
   - RULE-SET,Netflix / Domain,Netflix
   - RULE-SET,Netflix / IP,Netflix,no-resolve
-  - RULE-SET,Disney / Domain,Disney
-  - RULE-SET,HBO / Domain,HBO
-  - RULE-SET,Spotify / Domain,Spotify
-  - RULE-SET,Steam / Domain,Steam
+  - RULE-SET,Disney / Domain,Streaming
+  - RULE-SET,HBO / Domain,Streaming
+  - RULE-SET,Spotify / Domain,Streaming
+  - RULE-SET,Amazon / Domain,Streaming
+  - RULE-SET,Steam / Domain,Game
   - RULE-SET,Epic / Domain,Game
   - RULE-SET,EA / Domain,Game
   - RULE-SET,Blizzard / Domain,Game
@@ -204,14 +164,15 @@ rules:
   - RULE-SET,Nintend / Domain,Game
   - RULE-SET,Google / Domain,Google
   - RULE-SET,Google / IP,Google,no-resolve
+  - RULE-SET,Youtube / Domain,Google
   - RULE-SET,TEST / Domain,Test
   - RULE-SET,Proxy / Domain,国外
-  - RULE-SET,Globe / Domain,国外  
+  - RULE-SET,Globe / Domain,国外
   - RULE-SET,Direct / Domain,国内
   - RULE-SET,China / Domain,国内
   - RULE-SET,China / IP,国内,no-resolve
   - RULE-SET,Private / Domain,国内
-  - MATCH,其他
+  - MATCH,漏网之鱼
 
 # ========================
 # 规则集提供者
@@ -261,6 +222,3 @@ rule-providers:
   China / Domain: {<<: *domain, url: "https://github.geekery.cn/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   China / IP: {<<: *ip, url: "https://github.geekery.cn/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   Private / Domain: {<<: *domain, url: "https://github.geekery.cn/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-#  GateFireWall / Domain: {<<: *domain, url: "https://github.geekery.cn/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
-
-
