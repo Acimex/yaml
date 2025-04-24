@@ -102,7 +102,7 @@ default: &default
   proxies: [直连,所有-自动,香港-自动,台湾-自动,日本-自动,新加坡-自动,韩国-自动,美国-自动,其他-自动,所有-手动,拒绝]
 
 proxy-groups:
-  - {name: 所有-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: 所有-自动, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(套餐|直连|拒绝)).)*$"}
   - {name: Google, <<: *default}
   - {name: WhatsApp, <<: *default}
   - {name: Telegram, <<: *default}
