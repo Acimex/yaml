@@ -218,13 +218,6 @@ proxy-groups:
     include-all: true
     filter: "^((?!(直连|拒绝)).)*$"
 
-  - name: 所有-自动
-    type: url-test
-    include-all: true
-    tolerance: 50
-    interval: 300
-    filter: "^((?!(直连|拒绝)).)*$"
-
   - name: 香港-自动
     type: url-test
     include-all: true
@@ -266,6 +259,13 @@ proxy-groups:
     tolerance: 50
     interval: 300
     filter: "(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)).*$"
+
+  - name: 所有-自动
+    type: url-test
+    include-all: true
+    tolerance: 50
+    interval: 300
+    filter: "^((?!(直连|拒绝)).)*$"
 
   - name: 香港-故转
     type: fallback
