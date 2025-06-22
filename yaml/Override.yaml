@@ -1,147 +1,111 @@
 proxy-groups:
-  # ======== 核心节点组 ========
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
     proxies:
       - 自动选择
-      - 手动切换
-      - DIRECT
       - 香港节点
       - 台湾节点
       - 狮城节点
       - 日本节点
       - 美国节点
       - 韩国节点
-
+      - 手动切换
+      - DIRECT
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     type: select
-
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
     include-all: true
     interval: 300
     tolerance: 50
-    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media|TikTok|抖音)).*"
-
-  # ======== 地区节点组 ========
-  - name: 香港节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    type: url-test
-    include-all: true
-    filter: "^(?!(奈飞|NF|解锁|TikTok|抖音))(?i)港|HK|Hong"
-    interval: 300
-    tolerance: 50
-
-  - name: 日本节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-    type: url-test
-    include-all: true
-    filter: "^(?!(奈飞|NF|解锁))(?i)日本|JP|Tokyo|Osaka"
-    interval: 300
-    tolerance: 50
-
-  - name: 美国节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    type: url-test
-    include-all: true
-    filter: "^(?!(奈飞|NF|解锁))(?i)美|US|LA|Seattle"
-    interval: 300
-    tolerance: 50
-
-  - name: 台湾节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    type: url-test
-    include-all: true
-    filter: "^(?!(奈飞|NF|解锁))(?i)台|TW|Taipei"
-    interval: 300
-    tolerance: 50
-
-  - name: 狮城节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
-    type: url-test
-    include-all: true
-    filter: "(?i)新加坡|SG"
-    interval: 300
-    tolerance: 50
-
-  - name: 韩国节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
-    type: url-test
-    include-all: true
-    filter: "(?i)KR|Seoul"
-    interval: 300
-    tolerance: 50
-
-  - name: 奈飞节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    include-all: true
-    filter: "(?i)NF|奈飞|解锁|Netflix"
-    type: select
-
-  # ======== 服务专用组 ========  
-  - name: TikTok服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
-    type: select
-    proxies:
-      - 日本节点
-      - 美国节点
-      - 狮城节点
-      - 手动切换
-      - 节点选择
-
   - name: AI服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
     proxies:
+      - 节点选择
+      - 自动选择
       - 美国节点
       - 日本节点
       - 狮城节点
-      - 节点选择
-      - 自动选择
-  
-  - name: 国际服务
+      - 手动切换
+      - DIRECT
+  - name: 海外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
     proxies:
       - 节点选择
       - 自动选择
+      - 美国节点
+      - 日本节点
       - 狮城节点
       - 香港节点
-      - 美国节点
-
-  - name: 流媒体服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+      - 台湾节点
+      - 手动切换
+      - DIRECT
+  - name: TikTok
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
     type: select
     proxies:
-      - 奈飞节点
       - 节点选择
       - 自动选择
       - 美国节点
       - 日本节点
-  
-  - name: 国内服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+      - 狮城节点
+      - 手动切换
+  - name: 谷歌服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google.png
     type: select
     proxies:
-      - DIRECT
-      - 台湾节点
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 日本节点
+      - 狮城节点
       - 香港节点
-
-  # ======== 系统功能组 ========
-  - name: 全球直连
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+      - 台湾节点
+      - 手动切换
+      - DIRECT
+  - name: 微软服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     type: select
-    proxies: [DIRECT]
-
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 手动切换
+      - DIRECT
+  - name: 苹果服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 手动切换
+      - DIRECT
   - name: 广告拦截
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
-    proxies: [REJECT]
-
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 全球直连
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    type: select
+    proxies:
+      - DIRECT
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     type: select
@@ -149,61 +113,132 @@ proxy-groups:
       - 节点选择
       - 自动选择
       - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
 
-# ======== 规则优化 ========
+  # 节点筛选组
+  - name: 香港节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 日本节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    include-all: true
+    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 美国节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    include-all: true
+    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 台湾节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    include-all: true
+    filter: (?i)台|新北|彰化|TW|Taiwan
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 狮城节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    include-all: true
+    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 韩国节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    include-all: true
+    filter: (?i)KR|Korea|KOR|首尔|韩|韓
+    type: url-test
+    interval: 300
+    tolerance: 50
+
 rule-providers:
-  # 广告规则
-  AdBlock:
-    type: http
-    behavior: domain
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
-    path: ./ruleset/AdBlock.yaml
+  LocalAreaNetwork:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/LocalAreaNetwork.list
+    behavior: classical
     interval: 86400
-
-  # TikTok规则集
+    format: text
+    type: http
+  BanAD:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
+    path: ./ruleset/BanAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Google:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Google.list
+    path: ./ruleset/Google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Microsoft:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list
+    path: ./ruleset/Microsoft.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Apple:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  AI:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AI.list
+    path: ./ruleset/AI.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
   TikTok:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/TikTok.list"
-    path: ./ruleset/TikTok.yaml
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/TikTok.list
+    path: ./ruleset/TikTok.list
+    behavior: classical
     interval: 86400
-
-  # AI服务规则集
-  AIServices:
+    format: text
     type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
-    path: ./ruleset/AIServices.yaml
+  Streaming:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Streaming.list
+    path: ./ruleset/Streaming.list
+    behavior: classical
     interval: 86400
-
-  # 国际服务规则
-  GlobalServices:
+    format: text
     type: http
-    behavior: classical  # 修正为 classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list"
-    path: ./ruleset/GlobalServices.yaml
+  Proxy:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Proxy.list
+    path: ./ruleset/Proxy.list
+    behavior: classical
     interval: 86400
+    format: text
+    type: http
 
 rules:
-  - RULE-SET,AdBlock,广告拦截
-  - RULE-SET,TikTok,TikTok服务
-  - RULE-SET,AIServices,AI服务
-  
-  # 扩展AI服务域名
-  - DOMAIN-SUFFIX,anthropic.com,AI服务
-  - DOMAIN-SUFFIX,claude.ai,AI服务
-  - DOMAIN-SUFFIX,perplexity.ai,AI服务
-  - DOMAIN-SUFFIX,mistral.ai,AI服务
-  - DOMAIN-SUFFIX,cohere.com,AI服务
-  - DOMAIN-SUFFIX,gemini.google.com,AI服务
-  
-  # 流媒体服务硬编码规则
-  - DOMAIN-SUFFIX,youtube.com,流媒体服务
-  - DOMAIN-SUFFIX,netflix.com,流媒体服务
-  
-  # 通用国际服务规则
-  - RULE-SET,GlobalServices,国际服务
-  
-  # 最终规则
+  - RULE-SET,LocalAreaNetwork,全球直连
+  - RULE-SET,BanAD,广告拦截
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,AI,AI服务
+  - RULE-SET,TikTok,TikTok
+  - RULE-SET,Streaming,海外媒体
+  - RULE-SET,Proxy,节点选择
   - GEOIP,CN,全球直连
   - MATCH,漏网之鱼
