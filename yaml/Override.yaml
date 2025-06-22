@@ -83,26 +83,6 @@ proxy-groups:
     type: select
 
   # ======== 服务专用组 ========  
-  - name: 国际服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 狮城节点
-      - 香港节点
-      - 美国节点
-
-  - name: 流媒体服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    type: select
-    proxies:
-      - 奈飞节点
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 日本节点
-
   - name: TikTok服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
     type: select
@@ -122,6 +102,26 @@ proxy-groups:
       - 狮城节点
       - 节点选择
       - 自动选择
+  
+  - name: 国际服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 狮城节点
+      - 香港节点
+      - 美国节点
+
+  - name: 流媒体服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies:
+      - 奈飞节点
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 日本节点
   
   - name: 国内服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
