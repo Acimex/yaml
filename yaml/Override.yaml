@@ -1,0 +1,180 @@
+proxy-groups:
+  # ======== 核心节点组 ========
+  - name: 节点选择
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    type: select
+    proxies:
+      - 自动选择
+      - 手动切换
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+
+  - name: 手动切换
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+
+  - name: 自动选择
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+    type: url-test
+    include-all: true
+    interval: 300
+    tolerance: 50
+    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media)).*"  # 排除Netflix节点
+
+  # ======== 地区节点组 ========
+  - name: 香港节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    type: url-test
+    include-all: true
+    filter: "(?i)港|HK|Hong"
+    interval: 300
+    tolerance: 50
+
+  - name: 日本节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    type: url-test
+    include-all: true
+    filter: "(?i)日本|JP|Tokyo|Osaka"
+    interval: 300
+    tolerance: 50
+
+  - name: 美国节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    type: url-test
+    include-all: true
+    filter: "(?i)美|US|LA|Seattle"
+    interval: 300
+    tolerance: 50
+
+  - name: 台湾节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    type: url-test
+    include-all: true
+    filter: "(?i)台|TW|Taipei"
+    interval: 300
+    tolerance: 50
+
+  - name: 狮城节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    type: url-test
+    include-all: true
+    filter: "(?i)新加坡|SG"
+    interval: 300
+    tolerance: 50
+
+  - name: 韩国节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    type: url-test
+    include-all: true
+    filter: "(?i)KR|Seoul"
+    interval: 300
+    tolerance: 50
+
+  - name: 奈飞节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    include-all: true
+    filter: "(?i)NF|奈飞|解锁|Netflix"
+    type: select
+
+  # ======== 服务专用组 ========
+  - name: 国际服务  # 合并 Telegram/OpenAI/YouTube等
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 狮城节点
+      - 香港节点
+      - 美国节点
+
+  - name: 流媒体服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies:
+      - 奈飞节点
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 日本节点
+
+  - name: 国内服务  # 合并 国内媒体/哔哩哔哩/网易音乐
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    type: select
+    proxies:
+      - DIRECT
+      - 台湾节点
+      - 香港节点
+
+  - name: 微软服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 美国节点
+
+  # ======== 系统功能组 ========
+  - name: 全球直连
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    type: select
+    proxies: [DIRECT]
+
+  - name: 广告拦截
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    type: select
+    proxies: [REJECT]
+
+  - name: 应用净化
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
+    type: select
+    proxies: [REJECT]
+
+  - name: 漏网之鱼
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - DIRECT
+
+# ======== 规则优化 ========
+rule-providers:
+  # 合并广告规则
+  AdBlock:
+    type: http
+    behavior: domain
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
+    path: ./ruleset/AdBlock.yaml
+    interval: 86400
+
+  # 合并国内服务
+  ChinaServices:
+    type: http
+    behavior: domain
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list"
+    path: ./ruleset/ChinaServices.yaml
+    interval: 86400
+
+  # 国际服务规则
+  GlobalServices:
+    type: http
+    behavior: domain
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list"
+    path: ./ruleset/GlobalServices.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,AdBlock,广告拦截
+  - DOMAIN-KEYWORD,telegram,国际服务
+  - DOMAIN-SUFFIX,openai.com,国际服务
+  - DOMAIN-SUFFIX,youtube.com,流媒体服务
+  - DOMAIN-SUFFIX,netflix.com,流媒体服务
+  - RULE-SET,ChinaServices,国内服务
+  - GEOIP,CN,全球直连
+  - MATCH,漏网之鱼
