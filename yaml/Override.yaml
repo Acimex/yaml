@@ -25,14 +25,14 @@ proxy-groups:
     include-all: true
     interval: 300
     tolerance: 50
-    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media)).*"  # 排除Netflix节点
+    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media|TikTok|抖音)).*"  # 排除特殊节点
 
   # ======== 地区节点组 ========
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     type: url-test
     include-all: true
-    filter: "(?i)港|HK|Hong"
+    filter: "^(?!(奈飞|NF|解锁|TikTok|抖音))(?i)港|HK|Hong"
     interval: 300
     tolerance: 50
 
@@ -40,7 +40,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     type: url-test
     include-all: true
-    filter: "(?i)日本|JP|Tokyo|Osaka"
+    filter: "^(?!(奈飞|NF|解锁))(?i)日本|JP|Tokyo|Osaka"
     interval: 300
     tolerance: 50
 
@@ -48,7 +48,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     type: url-test
     include-all: true
-    filter: "(?i)美|US|LA|Seattle"
+    filter: "^(?!(奈飞|NF|解锁))(?i)美|US|LA|Seattle"
     interval: 300
     tolerance: 50
 
@@ -82,8 +82,8 @@ proxy-groups:
     filter: "(?i)NF|奈飞|解锁|Netflix"
     type: select
 
-  # ======== 服务专用组 ========
-  - name: 国际服务  # 合并 Telegram/OpenAI/YouTube等
+  # ======== 服务专用组 ========  
+  - name: 国际服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
     proxies:
@@ -103,21 +103,33 @@ proxy-groups:
       - 美国节点
       - 日本节点
 
-  - name: 国内服务  # 合并 国内媒体/哔哩哔哩/网易音乐
+    - name: TikTok服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
+    type: select
+    proxies:
+      - 日本节点  # TikTok 通常需要日本/美国节点
+      - 美国节点
+      - 狮城节点
+      - 手动切换
+      - 节点选择
+
+  - name: AI服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
+    type: select
+    proxies:
+      - 美国节点  # AI 服务通常需要美国节点
+      - 日本节点
+      - 狮城节点
+      - 节点选择
+      - 自动选择
+  
+  - name: 国内服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
     type: select
     proxies:
       - DIRECT
       - 台湾节点
       - 香港节点
-
-  - name: 微软服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 美国节点
 
   # ======== 系统功能组 ========
   - name: 全球直连
@@ -127,11 +139,6 @@ proxy-groups:
 
   - name: 广告拦截
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    type: select
-    proxies: [REJECT]
-
-  - name: 应用净化
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
     type: select
     proxies: [REJECT]
 
@@ -145,7 +152,7 @@ proxy-groups:
 
 # ======== 规则优化 ========
 rule-providers:
-  # 合并广告规则
+  # 广告规则
   AdBlock:
     type: http
     behavior: domain
@@ -153,12 +160,20 @@ rule-providers:
     path: ./ruleset/AdBlock.yaml
     interval: 86400
 
-  # 合并国内服务
-  ChinaServices:
+  # TikTok规则集
+  TikTok:
     type: http
     behavior: domain
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list"
-    path: ./ruleset/ChinaServices.yaml
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/TikTok.list"
+    path: ./ruleset/TikTok.yaml
+    interval: 86400
+
+  # AI服务规则集
+  AIServices:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
+    path: ./ruleset/AIServices.yaml
     interval: 86400
 
   # 国际服务规则
@@ -171,10 +186,20 @@ rule-providers:
 
 rules:
   - RULE-SET,AdBlock,广告拦截
-  - DOMAIN-KEYWORD,telegram,国际服务
-  - DOMAIN-SUFFIX,openai.com,国际服务
+  - RULE-SET,TikTok,TikTok服务  # TikTok专用规则
+  - RULE-SET,AIServices,AI服务  # AI服务专用规则
+  
+  # 扩展AI服务域名
+  - DOMAIN-SUFFIX,anthropic.com,AI服务
+  - DOMAIN-SUFFIX,claude.ai,AI服务
+  - DOMAIN-SUFFIX,perplexity.ai,AI服务
+  - DOMAIN-SUFFIX,mistral.ai,AI服务
+  - DOMAIN-SUFFIX,cohere.com,AI服务
+  - DOMAIN-SUFFIX,gemini.google.com,AI服务
+  - DOMAIN-SUFFIX,deepseek.com,AI服务
+  
+  - RULE-SET,GlobalServices,国际服务
   - DOMAIN-SUFFIX,youtube.com,流媒体服务
   - DOMAIN-SUFFIX,netflix.com,流媒体服务
-  - RULE-SET,ChinaServices,国内服务
   - GEOIP,CN,全球直连
   - MATCH,漏网之鱼
