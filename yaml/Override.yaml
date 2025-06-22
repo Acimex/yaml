@@ -25,7 +25,7 @@ proxy-groups:
     include-all: true
     interval: 300
     tolerance: 50
-    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media|TikTok|抖音)).*"  # 排除特殊节点
+    filter: "^(?!(奈飞|NF|解锁|Netflix|NETFLIX|Media|TikTok|抖音)).*"
 
   # ======== 地区节点组 ========
   - name: 香港节点
@@ -56,7 +56,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     type: url-test
     include-all: true
-    filter: "(?i)台|TW|Taipei"
+    filter: "^(?!(奈飞|NF|解锁))(?i)台|TW|Taipei"
     interval: 300
     tolerance: 50
 
@@ -103,11 +103,11 @@ proxy-groups:
       - 美国节点
       - 日本节点
 
-    - name: TikTok服务
+  - name: TikTok服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
     type: select
     proxies:
-      - 日本节点  # TikTok 通常需要日本/美国节点
+      - 日本节点
       - 美国节点
       - 狮城节点
       - 手动切换
@@ -117,7 +117,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
     proxies:
-      - 美国节点  # AI 服务通常需要美国节点
+      - 美国节点
       - 日本节点
       - 狮城节点
       - 节点选择
@@ -179,15 +179,15 @@ rule-providers:
   # 国际服务规则
   GlobalServices:
     type: http
-    behavior: domain
+    behavior: classical  # 修正为 classical
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list"
     path: ./ruleset/GlobalServices.yaml
     interval: 86400
 
 rules:
   - RULE-SET,AdBlock,广告拦截
-  - RULE-SET,TikTok,TikTok服务  # TikTok专用规则
-  - RULE-SET,AIServices,AI服务  # AI服务专用规则
+  - RULE-SET,TikTok,TikTok服务
+  - RULE-SET,AIServices,AI服务
   
   # 扩展AI服务域名
   - DOMAIN-SUFFIX,anthropic.com,AI服务
@@ -196,10 +196,14 @@ rules:
   - DOMAIN-SUFFIX,mistral.ai,AI服务
   - DOMAIN-SUFFIX,cohere.com,AI服务
   - DOMAIN-SUFFIX,gemini.google.com,AI服务
-  - DOMAIN-SUFFIX,deepseek.com,AI服务
   
-  - RULE-SET,GlobalServices,国际服务
+  # 流媒体服务硬编码规则
   - DOMAIN-SUFFIX,youtube.com,流媒体服务
   - DOMAIN-SUFFIX,netflix.com,流媒体服务
+  
+  # 通用国际服务规则
+  - RULE-SET,GlobalServices,国际服务
+  
+  # 最终规则
   - GEOIP,CN,全球直连
   - MATCH,漏网之鱼
