@@ -6,28 +6,8 @@
 
 proxy-providers:
 
-  云深:
-    url: "https://ysbzc1.subscribe1.us/api/v1/client/subscribe?token=a82cf04a573b2bcd3ee0c160f2c8863c"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-
   星畅:
-    url: "https://xcyun.cc/xe45lgf21?token=314db6d2520b8b8fdf627c6fd0bb66c2"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-
-  流量光:
-    url: "https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=7456c2a31b9ea1f0ca124b5bf5a2b1d0"
+    url: "https://xcyun.cc/xe45lgf21?token=24391530291c7afd20b09a082ecb0e4f"
     type: http
     interval: 86400
     health-check:
@@ -37,7 +17,7 @@ proxy-providers:
     proxy: 直连
 
   渔云:
-    url: "https://cloudfisher.one/jsk34?token=09fd2cb6c10789570ef9c7e5e3c6b264"
+    url: "https://cloudfisher.xyz/jsk34?token=1f15611bcfea27e25c965e24f5ccbabf"
     type: http
     interval: 86400
     health-check:
@@ -47,7 +27,7 @@ proxy-providers:
     proxy: 直连      
 
   红杏:
-    url: "https://hongxingdl.love/hxyunvip?token=25521ccd4f1ab68fcc36f2c66356342d"
+    url: "https://hongxingyun10.vip/hxyunvip?token=ec0f94ca4a713fab05ddb4588decd314"
     type: http
     interval: 86400
     health-check:
@@ -57,17 +37,7 @@ proxy-providers:
     proxy: 直连 
 
   飞鸟:
-    url: "https://fn3.435462.xyz/api/v1/client/subscribe?token=5ac7f301d356662849df779548435ef4"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连    
-
-  大炫:
-    url: "https://sub.phantasy.life/api/v1/client/subscribe?token=35e9531b498e66c609ff464c179cd351"
+    url: "https://fn1.fnxx.cc/api/v1/client/subscribe?token=9f78c3e57203b97f379a8ed72b6ce3e6"
     type: http
     interval: 86400
     health-check:
@@ -75,16 +45,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连  
-
-  三分:
-    url: "http://103.150.11.56:12321/api/v1/client/subscribe?token=e7de035d2f702b21dfe672f07d4dc7a6"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连    
 
 proxies:
   - {name: 直连, type: direct}
@@ -161,6 +121,14 @@ default: &default
     - 韩国-故转
     - 美国-故转
     - 其他-故转
+    - 香港-自动
+    - 台湾-自动
+    - 日本-自动
+    - 新加坡-自动
+    - 韩国-自动
+    - 美国-自动
+    - 其他-自动
+
     - 拒绝
 
 proxy-groups:
