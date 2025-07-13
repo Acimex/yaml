@@ -6,8 +6,8 @@
 
 proxy-providers:
 
-  SUB-STORE:
-    url: "https://xcyun.cc/xe45lgf21?token=24391530291c7afd20b09a082ecb0e4f"
+  Provider:
+    url: ""
     type: http
     interval: 86400
     health-check:
@@ -18,7 +18,6 @@ proxy-providers:
 
 proxies:
   - {name: 直连, type: direct}
-  - {name: 拒绝, type: reject}
 
 # ========================
 # 主要端口设置
@@ -95,11 +94,13 @@ profile:
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
+    exclude-type: "direct"
     type: select
   - name: 自动选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
     include-all: true
+    exclude-type: "direct"
     interval: 300
     tolerance: 50
   - name: AI服务
