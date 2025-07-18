@@ -7,7 +7,7 @@
 proxy-providers:
 
   星畅:
-    url: "https://xcyun.cc/xe45lgf21?token=24391530291c7afd20b09a082ecb0e4f"
+    url: ""
     type: http
     interval: 86400
     health-check:
@@ -15,36 +15,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连
-
-  渔云:
-    url: "https://cloudfisher.xyz/jsk34?token=1f15611bcfea27e25c965e24f5ccbabf"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连      
-
-  红杏:
-    url: "https://hongxingyun10.vip/hxyunvip?token=ec0f94ca4a713fab05ddb4588decd314"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连 
-
-  飞鸟:
-    url: "https://fn1.fnxx.cc/api/v1/client/subscribe?token=9f78c3e57203b97f379a8ed72b6ce3e6"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连  
 
 proxies:
   - {name: 直连, type: direct}
