@@ -7,7 +7,7 @@
 proxy-providers:
 
   Provider:
-    url: "https://irkholybvnbl.ap-southeast-1.clawcloudrun.com/z0n8y6mF8d4dQNWtFowK/download/collection/2in1?target=ClashMeta"
+    url: ""
     type: http
     interval: 86400
     health-check:
