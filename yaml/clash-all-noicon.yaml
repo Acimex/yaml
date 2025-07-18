@@ -7,34 +7,14 @@
 proxy-providers:
 
   云深:
-    url: "https://ysbzc1.subscribe1.us/api/v1/client/subscribe?token=a82cf04a573b2bcd3ee0c160f2c8863c"
+    url: ""
     type: http
     interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 直连
-
-  流量光:
-    url: "https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=7456c2a31b9ea1f0ca124b5bf5a2b1d0"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-
-  星畅:
-    url: "https://xcyun.cc/xe45lgf21?token=314db6d2520b8b8fdf627c6fd0bb66c2"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连      
+    proxy: 直连    
 
 proxies:
   - {name: 直连, type: direct}
