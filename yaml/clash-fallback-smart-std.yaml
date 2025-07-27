@@ -7,7 +7,7 @@
 proxy-providers:
 
   Substore:
-    url: "https://irkholybvnbl.ap-southeast-1.clawcloudrun.com/z0n8y6mF8d4dQNWtFowK/download/collection/%E4%B8%89%E5%90%88%E4%B8%80?target=ClashMeta"
+    url: "=ClashMeta"
     type: http
     interval: 86400
     health-check:
